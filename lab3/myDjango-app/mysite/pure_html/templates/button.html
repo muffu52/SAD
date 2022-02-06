@@ -1,13 +1,15 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homework</title>
+    <title>My-Title</title>
 
-    {% load static %}
-    <link rel = "stylesheet" href = "{% static 'main-style.css'%}">
+    {% load static%}
+    <link rel='stylesheet' href="{% static 'main-style.css'%}">
+    <link rel='stylesheet' href="{% static 'button.css'%}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Poppins&display=swap" rel="stylesheet">
@@ -16,15 +18,11 @@
 <body class="full super-center-grid ">
 
     <div class="super-center-grid main-layout default-shadow">
-        <button style="margin-right: 10px;" id="show-btn">Show name</button>
-        <h1 id="name">-</h1>
-        <button style="display: none;" id="clear-btn">clear</button>
-
-
-
-
+        <button id="add-btn">Click me</button>
+        <button id="clear-btn">clear</button>
+        <h1 id="count">-</h1>
     </div>
 </body>
-<script src="{% static 'homework.js' %}"></script>  
+<script src="{% static 'button.js'%}"></script>
 
 </html>

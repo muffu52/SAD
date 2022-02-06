@@ -16,8 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 import teammate.views
+import pure_html.views
 
 urlpatterns = [
+    path('', teammate.views.index, name='index'),
     path('admin/', admin.site.urls),
-    
+    path('pure-html/',pure_html.views.home),
+    path('pure-html/interval',pure_html.views.interval),
+    path('pure-html/button',pure_html.views.button),
+    path('pure-html/homework',pure_html.views.homework)
 ]
