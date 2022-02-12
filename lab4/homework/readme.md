@@ -77,7 +77,7 @@ CMD [ "python3", "manage.py", "runserver", "0.0.0.0:8000"]
 ```
 sudo docker build . -t python-django:v1
 
-sudo docker run -d -p 8000:8000 -v "{FULL path to current folder}:/app" python-django:v1
+sudo docker run -d -p 8000:8000 -v "{FULL path to current folder}/bestProjectName:/app" python-django:v1
 ```
 > run **pwd** command to find full path to current folder
 
