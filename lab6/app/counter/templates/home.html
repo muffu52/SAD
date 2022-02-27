@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+    {% load static%}
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
+</head>
+
+
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <button id="add-btn">click here for adding</button>
+
+    <button id="show-btn">click here for getting</button>
+
+    <button id="reset-btn">click here for resetting</button>
+
+    <h1 id="output-dom"></h1>
+
+    <script>
+        var data = JSON.parse("{{data|escapejs}}");
+        let nameHTML = document.getElementById("output-dom");
+        let showBtn = document.getElementById("show-btn");
+        let addBtn = document.getElementById("add-btn");
+        let resetBtn = document.getElementById("reset-btn");
+
+        let myName = "";
+
+        nameHTML.innerHTML = myName.toString();
+
+        const updateCountDom = (value) => {
+            nameHTML.innerHTML = value;
+        };
+
+        showBtn.addEventListener("click", () => {
+            $.ajax({
+                type: "GET",
+                url: "/api",
+                data: {
+                    content: data.id,
+                    csrfmiddlewaretoken: "{{ csrf_token }}",
+                },
+                success: function(response) {
+                    myName =
+                        '<code class="prettyprint">{' +
+                        data.name +
+                        ":  " +
+                        response +
+                        "}</code>";
+                    updateCountDom(myName);
+                },
+            });
+        });
+
+        addBtn.addEventListener("click", () => {
+            $.ajax({
+                type: "POST",
+                url: "/api/count",
+                data: {
+                    content: data.id,
+                    csrfmiddlewaretoken: "{{ csrf_token }}",
+                },
+                success: function(response) {},
+            });
+        });
+
+        resetBtn.addEventListener("click", () => {
+            $.ajax({
+                type: "POST",
+                url: "/api/reset",
+                data: {
+                    content: data.id,
+                    csrfmiddlewaretoken: "{{ csrf_token }}",
+                },
+                success: function(response) {},
+            });
+        });
+    </script>
+
+</body>
+
+
+
+</html>
